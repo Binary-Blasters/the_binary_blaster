@@ -33,9 +33,10 @@ export default function ContactForm() {
       } else {
         alert('❌ Failed to send message. Try again later.');
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error sending form:', error);
-      alert('❌ Something went wrong: ' + error.message);
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      alert('❌ Something went wrong: ' + message);
     } finally {
       setLoading(false);
     }
