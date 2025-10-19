@@ -7,10 +7,12 @@ export async function POST(req: Request) {
     const body: ContactReqBody = await req.json();
     await sendMail(body);
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Email send error:", error);
+    const message =
+      error instanceof Error ? error.message : "Unknown error occurred";
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: message },
       { status: 500 }
     );
   }
