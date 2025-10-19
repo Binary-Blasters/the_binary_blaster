@@ -1,27 +1,46 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Send } from 'lucide-react';
-import { FormData } from '@/types';
+import { useState } from "react";
+import { Send } from "lucide-react";
+import { FormData } from "@/types";
+import axios from "axios";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
+    const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setLoading(true);
+
+    try {
+      const res = await axios.post('/api/contact', formData);
+
+      if (res.status === 200) {
+        alert('✅ Message sent! We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert('❌ Failed to send message. Try again later.');
+      }
+    } catch (error: any) {
+      console.error('Error sending form:', error);
+      alert('❌ Something went wrong: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="space-y-4">
@@ -53,7 +72,8 @@ export default function ContactForm() {
         onClick={handleSubmit}
         className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-emerald-500/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2 text-white"
       >
-        Send Message <Send className="w-4 h-4" />
+
+          {loading ? 'Sending...' : <>Send Message <Send className="w-4 h-4" /></>}
       </button>
     </div>
   );

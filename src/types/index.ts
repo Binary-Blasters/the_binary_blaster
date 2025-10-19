@@ -20,3 +20,14 @@ export interface FormData {
   email: string;
   message: string;
 }
+
+export interface MailOption {
+  name: string;
+  email: string;
+  message: string;
+}
+export interface ContactReqBody {
+  name: string;
+  email: string;
+  message: string;
+}
