@@ -45,3 +45,8 @@ export interface NavItems {
   icon: string
   dropdown?: DropdownItem[];
 }
+
+export interface Message{
+  message: string
+  success: boolean
+}
