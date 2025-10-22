@@ -1,6 +1,5 @@
 
 import { Service, Project, NavItems } from '@/types';
-import { Briefcase, Code, Home, Info, Layers, Mail, Palette, Search, Smartphone } from 'lucide-react';
 
 export const services: Service[] = [
   {
