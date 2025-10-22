@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { services } from "@/constants/data";
-import * as Icons from 'lucide-react';
+import * as Icons from "lucide-react";
 
 export default function Services() {
   //  const IconComponent = Icons[service.icon as keyof typeof Icons] as React.ComponentType<{ className: string }>;
-  
+
   return (
     <section className="py-24 px-6 text-center">
       <motion.h2
@@ -20,7 +20,11 @@ export default function Services() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {services.map((service, i) => {
-         const Icon = service.icon && Icons[service.icon as keyof typeof Icons];
+          const Icon = service.icon
+            ? (Icons[
+                service.icon as keyof typeof Icons
+              ] as React.ComponentType<{ className?: string }>)
+            : null;
 
           return (
             <motion.div
