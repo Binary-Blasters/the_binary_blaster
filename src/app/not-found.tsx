@@ -16,7 +16,7 @@ export default function NotFound() {
       </motion.h1>
 
       <p className="mt-4 text-xl text-gray-300">
-        Oops! The page you're looking for doesn't exist.
+        Oops! The page you're looking for doesn&apos;t exist.
       </p>
 
       <Link
