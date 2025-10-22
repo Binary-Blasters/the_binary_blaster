@@ -1,5 +1,17 @@
-import Hero from '@/components/Hero';
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import WhyChooseUs from "@/components/WhyChooseUs";
+
+import CTA from "@/components/CTA";
 
 export default function Home() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Services />
+      <WhyChooseUs />
+
+      <CTA />
+    </>
+  );
 }

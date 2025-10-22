@@ -1,4 +1,6 @@
-import { Service, Project } from '@/types';
+
+import { Service, Project, NavItems } from '@/types';
+import { Briefcase, Code, Home, Info, Layers, Mail, Palette, Search, Smartphone } from 'lucide-react';
 
 export const services: Service[] = [
   {
@@ -56,3 +58,21 @@ export const projects: Project[] = [
     color: 'from-violet-500 to-purple-500',
   },
 ];
+
+export const  navItems: NavItems[] = [
+    { label: 'Home', href: '/', icon: 'Home' },
+    { label: 'About', href: '/about', icon: 'Info' },
+    {
+      label: 'Services',
+      href: '/services',
+      icon: 'Layers',
+      dropdown: [
+        { label: 'Web Development', href: '/services/web', icon: 'Code' },
+        { label: 'App Development', href: '/services/app', icon: 'Smartphone' },
+        { label: 'UI/UX Design', href: '/services/uiux', icon: 'Palette' },
+        { label: 'SEO & Optimization', href: '/services/seo', icon: 'Search' },
+      ],
+    },
+    { label: 'Portfolio', href: '/portfolio', icon: 'Briefcase' },
+    { label: 'Contact', href: '/contact', icon: 'Mail' },
+  ];

@@ -1,3 +1,5 @@
+
+
 export interface Service {
   id: string;
   icon: string;
@@ -30,4 +32,16 @@ export interface ContactReqBody {
   name: string;
   email: string;
   message: string;
+}
+
+export interface DropdownItem {
+  label: string;
+  href: string;
+  icon: string
+}
+export interface NavItems {
+  label: string;
+  href: string;
+  icon: string
+  dropdown?: DropdownItem[];
 }
